@@ -47,7 +47,12 @@ def main():
     squares_of_even = list(map(lambda x: x ** 2, filter(is_even, numbers)))
     print("Квадраты чётных чисел (filter + map):", squares_of_even)
 
-    raw = input("Введите целые числа через пробел: ")
+    try:
+        raw = input("Введите целые числа через пробел: ")
+    except EOFError:
+        print()
+        print("Ввод не получен, интерактивная часть пропущена")
+        return
     try:
         user_numbers = parse_numbers(raw)
     except ValueError:

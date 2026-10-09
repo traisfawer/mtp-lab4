@@ -63,7 +63,13 @@ def main():
     total = sum(p for p in primes_up_to(1000))
     print("Сумма простых чисел до 1000 (генераторное выражение):", total)
 
-    raw = input("Введите N, чтобы получить простые числа до N: ").strip()
+    try:
+        raw = input("Введите N, чтобы получить простые числа "
+                    "до N: ").strip()
+    except EOFError:
+        print()
+        print("Ввод не получен, интерактивная часть пропущена")
+        return
     if raw.isdigit():
         print(f"Простые числа до {raw}:", list(primes_up_to(int(raw))))
     else:
